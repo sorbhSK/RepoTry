@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2>Event Loop Notes----</h2>
+    <div>
+        ------------------------------ Event Loop 3--------------------------------
+        event loop execute the task starting from the oldest first?
+
+        ChatGPT
+
+
+        No, the event loop in JavaScript does not necessarily execute tasks starting from the oldest first. The event
+        loop follows a specific order of execution, and it processes tasks based on their priority and the type of task.
+
+        The event loop consists of several phases:
+
+        Macrotask Queue Execution (Callback Queue): This includes tasks such as script execution, I/O operations, and
+        setTimeout/setInterval callbacks. The event loop picks the oldest task from the macrotask queue and executes it.
+
+        Microtask Queue Execution (Job Queue): This includes tasks such as Promise callbacks (resolved or rejected) and
+        Mutation Observer callbacks. The event loop executes all microtasks in the microtask queue before moving on to
+        the next macrotask.
+
+        The key point to note is that within a single tick of the event loop, all microtasks are executed before moving
+        on to the next macrotask. Microtasks have higher priority than macrotasks in the event loop.
+
+        Here's a simplified flow:
+
+        -Execute all microtasks in the microtask queue.
+        -Pick and execute the oldest macrotask from the macrotask queue.
+        -Repeat the process.
+
+
+        This order ensures that microtasks are processed before moving on to the next macrotask. The event loop aims to
+        maintain responsiveness and prioritize tasks that are more immediate, such as handling user interactions or
+        resolving promises.
+
+        It's important to understand this behavior when working with asynchronous JavaScript, as it can affect the order
+        of execution and impact the performance of your applications.
+    </div>
+</body>
+
+</html>
